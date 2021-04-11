@@ -19,7 +19,7 @@ const AppContainer = styled.div`
 `;
 
 function App() {
-  const [theme, setTheme] = useState(DARK_THEME);
+  const [theme, setTheme] = useState(() => DARK_THEME);
   const changeTheme = () =>
     setTheme((prevTheme) =>
       prevTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME
