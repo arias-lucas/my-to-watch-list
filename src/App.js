@@ -6,7 +6,7 @@ import MovieDetails from './movie-details/MovieDetails';
 import MyToWatchList from './my-to-watch-list/MyToWatchList';
 import NoMatch from './no-match/NoMatch';
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./themes"
+import { LIGHT_THEME, DARK_THEME } from "./themes"
 import AppHeader from './app-header/AppHeader';
 
 const AppContainer = styled.div`
@@ -18,12 +18,12 @@ const AppContainer = styled.div`
 `;
 
 function App() {
-  const [theme, setTheme] = useState(darkTheme);
-  const changeTheme = () => setTheme(prevTheme => prevTheme === darkTheme ? lightTheme : darkTheme);
+  const [theme, setTheme] = useState(DARK_THEME);
+  const changeTheme = () => setTheme(prevTheme => prevTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME);
 
   return <ThemeProvider theme={theme}>
     <AppContainer>
-      <AppHeader handleChange={changeTheme}></AppHeader>
+      <AppHeader handleThemeChange={changeTheme}></AppHeader>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/details/:id" component={MovieDetails} />

@@ -9,10 +9,10 @@ const Header = styled.h1`
   font-weight: 100;
 `;
 
-function AppHeader({ handleChange }) {
+function AppHeader({ handleThemeChange }) {
   return <>
     <Header>MY TO WATCH LIST</Header>
-    <ThemesSwitch handleChange={handleChange}></ThemesSwitch>
+    <ThemesSwitch handleThemeChange={handleThemeChange}></ThemesSwitch>
   </>
 }
 

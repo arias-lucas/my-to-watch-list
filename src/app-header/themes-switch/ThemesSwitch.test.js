@@ -4,7 +4,7 @@ import ThemesSwitch from './ThemesSwitch';
 
 test('should change to light theme', () => {
   const mockedHandleChange = jest.fn();
-  const { getByRole } = render(<ThemesSwitch handleChange={mockedHandleChange} />)
+  const { getByRole } = render(<ThemesSwitch handleThemeChange={mockedHandleChange} />)
   const themesSwitch = getByRole('themeSwitch');
   fireEvent.click(themesSwitch);
   expect(mockedHandleChange).toHaveBeenCalled();
@@ -12,7 +12,7 @@ test('should change to light theme', () => {
 
 test("shouldn't change theme if its using a theme and we click on its icon", () => {
   const mockedHandleChange = jest.fn();
-  const { getByRole } = render(<ThemesSwitch handleChange={mockedHandleChange} />)
+  const { getByRole } = render(<ThemesSwitch handleThemeChange={mockedHandleChange} />)
   const themesSwitch = getByRole('themeSwitch');
   const darkThemeIcon = getByRole('darkThemeIcon');
   const lightThemeIcon = getByRole('lightThemeIcon');

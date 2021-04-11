@@ -3,14 +3,14 @@ import NightsStayIcon from '@material-ui/icons/NightsStay';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import { ThemesContainer, IconContainer, ThemeSwitch } from './ThemesSwitch.styles';
 
-function ThemesSwitch({ handleChange }) {
+function ThemesSwitch({ handleThemeChange }) {
   const dark = false;
   const light = true;
   const [switchThemeValue, setSwitchThemeValue] = useState(dark);
 
   const changeSwitch = () => {
     setSwitchThemeValue(prev => !prev)
-    handleChange();
+    handleThemeChange();
   }
 
   return <ThemesContainer>
