@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import Switch from '@material-ui/core/Switch';
-import { withStyles } from '@material-ui/core/styles';
-import { grey } from '@material-ui/core/colors';
+import styled from "styled-components";
+import Switch from "@material-ui/core/Switch";
+import { withStyles } from "@material-ui/core/styles";
+import { grey } from "@material-ui/core/colors";
 
 const ThemesContainer = styled.div`
   position: absolute;
@@ -20,16 +20,16 @@ const IconContainer = styled.span`
   cursor: pointer;
 `;
 
-const ThemeSwitch = withStyles({
+const ThemeToggle = withStyles({
   switchBase: {
     color: grey[300],
-    '$bar': {
+    $bar: {
       backgroundColor: grey[100],
     },
-    '&$checked': {
+    "&$checked": {
       color: grey[800],
     },
-    '&$checked + $track': {
+    "&$checked + $track": {
       backgroundColor: grey[600],
     },
   },
@@ -37,4 +37,4 @@ const ThemeSwitch = withStyles({
   track: {},
 })(Switch);
 
-export { ThemesContainer, IconContainer, ThemeSwitch }
+export { ThemesContainer, IconContainer, ThemeToggle };

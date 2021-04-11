@@ -1,43 +1,51 @@
-import React, { useState } from 'react';
-import NightsStayIcon from '@material-ui/icons/NightsStay';
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import { ThemesContainer, IconContainer, ThemeSwitch } from './ThemesSwitch.styles';
+import React from "react";
+import { ThemeContext, DARK_THEME } from "./../../themes";
+import NightsStayIcon from "@material-ui/icons/NightsStay";
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
+import {
+  ThemesContainer,
+  IconContainer,
+  ThemeToggle,
+} from "./ThemesSwitch.styles";
 
-function ThemesSwitch({ handleThemeChange }) {
-  const dark = false;
-  const light = true;
-  const [switchThemeValue, setSwitchThemeValue] = useState(dark);
+const isDarkThemeActive = (theme) => theme !== DARK_THEME;
 
-  const changeSwitch = () => {
-    setSwitchThemeValue(prev => !prev)
-    handleThemeChange();
-  }
-
-  return <ThemesContainer>
-    <IconContainer style={{
-      left: '-10px'
-    }}
-      onClick={() => (switchThemeValue !== dark) && changeSwitch()}
-      role="darkThemeIcon">
-      <NightsStayIcon />
-    </IconContainer>
-    <ThemeSwitch
-      onChange={changeSwitch}
-      color="default"
-      checked={switchThemeValue}
-      inputProps={{
-        role: 'themeSwitch',
-        'aria-label': "Switch theme's site"
-      }}
-    />
-    <IconContainer style={{
-      right: '-10px'
-    }}
-      onClick={() => (switchThemeValue !== light) && changeSwitch()}
-      role="lightThemeIcon">
-      <WbSunnyIcon />
-    </IconContainer>
-  </ThemesContainer>
+function ThemesSwitch() {
+  return (
+    <ThemeContext.Consumer>
+      {({ theme, changeTheme }) => (
+        <ThemesContainer>
+          <IconContainer
+            style={{
+              left: "-10px",
+            }}
+            onClick={() => isDarkThemeActive(theme) && changeTheme()}
+            role="darkThemeIcon"
+          >
+            <NightsStayIcon />
+          </IconContainer>
+          <ThemeToggle
+            onChange={changeTheme}
+            color="default"
+            checked={isDarkThemeActive(theme)}
+            inputProps={{
+              role: "themeSwitch",
+              "aria-label": "Switch theme's site",
+            }}
+          />
+          <IconContainer
+            style={{
+              right: "-10px",
+            }}
+            onClick={() => !isDarkThemeActive(theme) && changeTheme()}
+            role="lightThemeIcon"
+          >
+            <WbSunnyIcon />
+          </IconContainer>
+        </ThemesContainer>
+      )}
+    </ThemeContext.Consumer>
+  );
 }
 
-export default ThemesSwitch; 
+export default ThemesSwitch;
