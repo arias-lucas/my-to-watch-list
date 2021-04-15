@@ -7,7 +7,7 @@ import MyToWatchList from "./my-to-watch-list/MyToWatchList";
 import NoMatch from "./no-match/NoMatch";
 import { ThemeProvider } from "styled-components";
 import { LIGHT_THEME, DARK_THEME } from "./themes";
-import AppHeader from "./app-header/AppHeader";
+import AppHeader from "./header/AppHeader";
 import { ThemeContext } from "./themes";
 
 const AppContainer = styled.div`
